@@ -15,11 +15,7 @@
         </ul>
       </el-col>
       <el-col :span="12">
-        <img
-          :src="errGif"
-          width="313"
-          height="428"
-          alt="Girl has dropped her ice cream." />
+        <img :src="errGif" width="313" height="428" alt="Girl has dropped her ice cream." />
       </el-col>
     </el-row>
   </div>
@@ -30,66 +26,65 @@ name: '401'
 </route>
 
 <script lang="ts" setup>
-  import errorGif from '@/assets/images/401.gif'
-  import { useRoute, useRouter } from 'vue-router'
+import errorGif from '@/assets/images/401.gif'
 
-  const route = useRoute()
-  const router = useRouter()
+const route = useRoute()
+const router = useRouter()
 
-  const errGif = errorGif + '?' + +new Date()
+const errGif = errorGif + '?' + +new Date()
 
-  function back() {
-    if (route.query.noGoBack) {
-      return router.push({ path: '/' })
-    }
-    router.go(-1)
+function back() {
+  if (route.query.noGoBack) {
+    return router.push({ path: '/' })
   }
+  router.go(-1)
+}
 </script>
 
 <style lang="less" scoped>
-  .errPage-container {
-    width: 800px;
-    max-width: 100%;
-    margin: 100px auto;
+.errPage-container {
+  width: 800px;
+  max-width: 100%;
+  margin: 100px auto;
 
-    .pan-back-btn {
-      background: #008489;
-      color: #fff;
-      border: none !important;
+  .pan-back-btn {
+    background: #008489;
+    color: #fff;
+    border: none !important;
+  }
+
+  .pan-gif {
+    margin: 0 auto;
+    display: block;
+  }
+
+  .pan-img {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .text-jumbo {
+    font-size: 60px;
+    font-weight: 700;
+    color: #484848;
+  }
+
+  .list-unstyled {
+    font-size: 14px;
+
+    li {
+      padding-bottom: 5px;
     }
 
-    .pan-gif {
-      margin: 0 auto;
-      display: block;
-    }
+    a {
+      color: #008489;
+      text-decoration: none;
 
-    .pan-img {
-      display: block;
-      margin: 0 auto;
-      width: 100%;
-    }
-
-    .text-jumbo {
-      font-size: 60px;
-      font-weight: 700;
-      color: #484848;
-    }
-
-    .list-unstyled {
-      font-size: 14px;
-
-      li {
-        padding-bottom: 5px;
-      }
-
-      a {
-        color: #008489;
-        text-decoration: none;
-
-        &:hover {
-          text-decoration: underline;
-        }
+      &:hover {
+        text-decoration: underline;
       }
     }
   }
+}
 </style>

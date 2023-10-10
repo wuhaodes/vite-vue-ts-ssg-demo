@@ -1,7 +1,6 @@
 import { defineStore } from 'pinia'
 import { clearCookie, getToken, setToken } from '@/utils/auth'
 import { getInfo, login, logout } from '@/api/login'
-import biddingProcurementApi from '@/api/biddingProcurement'
 
 export default defineStore<string, UserStoreState, {}, UserStoreActions>(
   'user',
@@ -51,21 +50,6 @@ export default defineStore<string, UserStoreState, {}, UserStoreActions>(
         this.roles = roles || []
         this.user = user
         return infoRes as Record<string, any>
-      },
-      async getBiddingAccount() {
-        const token = this.token
-        if (!token) {
-          return ''
-        }
-        const biddingAccountRes = await biddingProcurementApi
-          .account()
-          .catch(console.error)
-        if (!biddingAccountRes) {
-          return
-        }
-        const info = biddingAccountRes.data || {}
-        this.accountInfo = info
-        return info.id || ''
       },
       logout() {
         logout().catch((e: any) => {

@@ -7,9 +7,7 @@
 </template>
 
 <script lang="ts" setup>
-import { provide, ref } from 'vue'
 import { filterEmpty } from './utils'
-import { useRoute, useRouter } from 'vue-router'
 import useStore from './store'
 
 const route = useRoute()

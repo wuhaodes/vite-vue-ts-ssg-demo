@@ -79,24 +79,6 @@ async function checkUserInfo() {
 }
 
 /**
- * @description 附加请求招标会员信息
- * @param to 跳转到的route
- */
-async function checkBidInfo(to: RouteLocation) {
-  const store = useStore()
-  const token = getToken() || store.token
-  if (!token) {
-    return
-  }
-
-  if (!to.path.includes('/biddingProcurement/')) {
-    return
-  }
-  const userStore = useUserStore()
-  await userStore.getBiddingAccount()
-}
-
-/**
  * @description 有token更正路径
  * @param to 跳转到的route
  * @param next
@@ -135,7 +117,6 @@ async function routerGuard(
   await savePassport(to)
   await checkSystemInfo()
   await checkUserInfo()
-  await checkBidInfo(to)
   await correctRedirect(to, next)
 }
 

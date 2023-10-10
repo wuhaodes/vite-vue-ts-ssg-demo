@@ -7,13 +7,6 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    BusAd: typeof import('./src/components/bus/ad.vue')['default']
-    BusRecommend: typeof import('./src/components/bus/recommend.vue')['default']
-    BusSearch: typeof import('./src/components/bus/search.vue')['default']
-    ComBread: typeof import('./src/components/com/bread.vue')['default']
-    ComFooter: typeof import('./src/components/com/footer.vue')['default']
-    ComHeader: typeof import('./src/components/com/header.vue')['default']
-    ComImage: typeof import('./src/components/com/image.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

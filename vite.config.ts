@@ -6,6 +6,8 @@ import vitePages from 'vite-plugin-pages'
 import ViteMarkdown from 'vite-plugin-md'
 import path from 'path'
 import Components from 'unplugin-vue-components/vite'
+import AutoImport from 'unplugin-auto-import/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import autoprefixer from 'autoprefixer'
 import ESlint from 'vite-plugin-eslint'
 
@@ -24,11 +26,18 @@ export default defineConfig(({ mode }) => {
         exclude: ['**/components/*.vue'],
       }),
       ViteMarkdown(),
+      AutoImport({
+        imports: ['vue', 'vue-router', 'pinia'],
+        resolvers: [ElementPlusResolver()],
+        dts: true,
+        eslintrc: { enabled: true }
+      }),
       Components({
         deep: true,
         directoryAsNamespace: true,
         collapseSamePrefixes: true,
         extensions: ['vue', 'tsx'],
+        resolvers: [ElementPlusResolver()],
       }),
     ],
     resolve: {
@@ -51,6 +60,9 @@ export default defineConfig(({ mode }) => {
         '/upload': 'http://192.168.3.214:8088',
         '/download': 'http://192.168.3.214:8088',
       },
+    },
+    ssr: {
+      noExternal: [/element-plus/]
     },
     build: {
       rollupOptions: {

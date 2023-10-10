@@ -22,7 +22,6 @@ interface UserStoreActions {
   setRoles: (roles: string[]) => void
   login: (userInfo: Record<string, any>) => Promise<string>
   getInfo: () => Promise<void | Record<string, any>>
-  getBiddingAccount: () => Promise<string>
   logout: () => void
   fedLogOut: () => void
   clearState: () => void

@@ -1,10 +1,8 @@
 <template>
   <div class="layout-container flex col">
-    <com-header ref="header" />
     <div class="app-main flex1">
       <router-view />
     </div>
-    <com-footer />
   </div>
 </template>
 

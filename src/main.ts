@@ -3,7 +3,6 @@ import 'element-plus/dist/index.css'
 import './style.less'
 import App from './App.vue'
 import routes from '~pages'
-import ElementPlus from 'element-plus'
 import { ViteSSG } from 'vite-ssg'
 import { createPinia } from 'pinia'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
@@ -16,7 +15,6 @@ export const createApp = ViteSSG(
   { routes },
   async ({ app, router, isClient }) => {
     app.use(pinia)
-    app.use(ElementPlus)
     app.use(directive)
     for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
       app.component(key, component)
